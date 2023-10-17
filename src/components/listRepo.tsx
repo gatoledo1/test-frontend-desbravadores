@@ -3,7 +3,20 @@ import { sortRepos } from "../utils/sorter";
 import { Row, Col, Form } from "react-bootstrap";
 import { timeSince } from "../utils/timeAgo";
 
-function RepoList({ repos }) {
+export interface Repository {
+  owner: {
+    login: string;
+  };
+  name: string;
+  id: string;
+  updated_at: string;
+}
+
+export interface Repositories {
+  repos: Repository[];
+}
+
+function RepoList({ repos }: Repositories) {
   const [sortBy, setSortBy] = useState("stars");
 
   const sortedRepos = sortRepos(repos, sortBy);

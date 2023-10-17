@@ -2,7 +2,18 @@ import React from 'react';
 import {Row, Col, Image} from 'react-bootstrap';
 import { Svgs } from './svgs';
 
-function UserDetails({ user }) {
+interface User {
+  user: {
+    avatar_url: string,
+    login: string,
+    followers: string,
+    following: string,
+    email: string,
+    bio: string,
+  }
+}
+
+function UserDetails({ user }: User) {
   return (
     <Row className='my-3 pt-md-3 mx-1 rounded-3 background-500' style={{position: "relative"}}>
       <Col sm={4} md={3} className='py-3 d-flex justify-content-center'>

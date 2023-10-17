@@ -6,9 +6,21 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { Loader } from "./loader";
 import { GoTo } from "./goTo";
 
+interface Details {
+  name: string,
+  description: string,
+  stargazers_count: string | number,
+  topics: string[],
+  parent: {
+    language: string,
+  },
+  language: string,
+  html_url: string,
+}
+
 function RepoDetails() {
   const { owner, repoName } = useParams();
-  const [repoDetails, setRepoDetails] = useState(undefined);
+  const [repoDetails, setRepoDetails] = useState<Details | undefined>(undefined);
 
   useEffect(() => {
     const fetchRepos = async () => {
