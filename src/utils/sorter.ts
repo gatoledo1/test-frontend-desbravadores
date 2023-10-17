@@ -1,4 +1,6 @@
-export const sortRepos = (repos: any, sortBy: string) => {
+import { Repository } from "../components/listRepo";
+
+export const sortRepos = (repos: Repository[], sortBy: string) => {
 
   const sortOptions = {
     stars: (a: { stargazers_count: number }, b: { stargazers_count: number }) => b.stargazers_count - a.stargazers_count,
