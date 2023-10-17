@@ -1,0 +1,53 @@
+:root {
+  --blue-700: #1D2144;
+  --blue-500: #272c5a;
+  --blue-300: #2e3680;
+  --blue-100: #556cd3;
+  --blue: #1e3dec;
+  --text: #dadada;
+}
+
+.background-700 {
+  background-color: var(--blue-700);
+  color: var(--text);
+}
+.background-500 {
+  background-color: var(--blue-500);
+  color: var(--text);
+}
+.background-300 {
+  background-color: var(--blue-300);
+  color: #fff;
+}
+.background-blue {
+  background-color: var(--blue);
+  color: #fff;
+}
+.text-blue {
+  color: var(--blue-100);
+}
+.normalize-text-color {
+  color: var(--text);
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+.animated {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+}
+
+.fadeInUp {
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+}
