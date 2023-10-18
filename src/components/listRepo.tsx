@@ -1,28 +1,16 @@
 import React, { useState } from "react";
 import { sortRepos } from "../utils/sorter";
 import { Row, Col, Form } from "react-bootstrap";
-import { timeSince } from "../utils/timeAgo";
-
-export interface Repository {
-  owner: {
-    login: string;
-  };
-  name: string;
-  id: string;
-  updated_at: string;
-}
-
-export interface Repositories {
-  repos: Repository[];
-}
+import { RepoItem } from "./repoItem";
+import { Repositories } from "../types/Repositories";
 
 function RepoList({ repos }: Repositories) {
   const [sortBy, setSortBy] = useState("stars");
 
   const sortedRepos = sortRepos(repos, sortBy);
 
-  const firstPartArray = sortedRepos.slice(0, (sortedRepos.length + 1) / 2);
-  const secondPartArray = sortedRepos.slice((sortedRepos.length + 1) / 2);
+  const firstPartArray = sortedRepos?.slice(0, (sortedRepos.length + 1) / 2);
+  const secondPartArray = sortedRepos?.slice((sortedRepos.length + 1) / 2);
 
   return (
     <>
@@ -51,34 +39,26 @@ function RepoList({ repos }: Repositories) {
       </Row>
       <Row className="py-4 mb-5 mx-1 px-2 rounded-bottom-3 background-500 animated fadeInUp">
         <Col md={6}>
-          <ul className="list-group">
-            {firstPartArray.map((repo) => (
-              <a
-                href={`/repo/${repo.owner.login}/${repo.name}`}
-                className="d-flex justify-content-between align-items-center list-group-item background-500"
-                style={{ borderColor: "var(--blue-300)" }}
-                key={repo.id}
-              >
-                <span className="fs-5">{repo.name}</span>
-                <span className="text-blue">{timeSince(new Date(repo.updated_at).getTime())} ago</span>
-              </a>
-            ))}
-          </ul>
+          {firstPartArray.length > 0 && (
+            <ul className="list-group">
+              {firstPartArray.map((repo, index) => (
+                <React.Fragment key={index}>
+                  <RepoItem {...repo} />
+                </React.Fragment>
+              ))}
+            </ul>
+          )}
         </Col>
         <Col md={6}>
-          <ul className="list-group">
-            {secondPartArray.map((repo) => (
-              <a
-                href={`/repo/${repo.owner.login}/${repo.name}`}
-                className="d-flex justify-content-between align-items-center list-group-item background-500"
-                style={{ borderColor: "var(--blue-300)" }}
-                key={repo.id}
-              >
-                <span className="fs-5">{repo.name}</span>
-                <span className="text-blue">{timeSince(new Date(repo.updated_at).getTime())} ago</span>
-              </a>
-            ))}
-          </ul>
+          {secondPartArray.length > 0 && (
+            <ul className="list-group">
+              {secondPartArray.map((repo, index) => (
+                <React.Fragment key={index}>
+                  <RepoItem {...repo} />
+                </React.Fragment>
+              ))}
+            </ul>
+          )}
         </Col>
       </Row>
     </>

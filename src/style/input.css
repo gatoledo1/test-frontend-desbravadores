@@ -33,6 +33,11 @@ input::placeholder {
   color: #aaa;
 }
 
+input:-internal-autofill-selected {
+  background-color: #2f366d !important;
+  color: #dadada !important;
+}
+
 .icon {
   position: absolute;
   height: 58px;

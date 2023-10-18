@@ -1,4 +1,4 @@
-import { Repository } from "../components/listRepo";
+import { Repository } from "../types/Repositories";
 
 export const sortRepos = (repos: Repository[], sortBy: string) => {
 
@@ -12,5 +12,5 @@ export const sortRepos = (repos: Repository[], sortBy: string) => {
       Number(new Date(a.updated_at)) - Number(new Date(b.updated_at)),
   };
 
-  return [...repos].sort(sortOptions[sortBy] || ((a, b) => 0));
+  return [...repos].sort(sortOptions[sortBy] || []);
 }
