@@ -3,18 +3,6 @@ import { WarningCircle } from "phosphor-react";
 import { Container, Row, Col, } from "react-bootstrap";
 import { GoTo } from "./goTo";
 
-interface Details {
-  name: string,
-  description: string,
-  stargazers_count: string | number,
-  topics: string[],
-  parent: {
-    language: string,
-  },
-  language: string,
-  html_url: string,
-}
-
 function EmptySearch() {
   return (
     <Container fluid="sm" className="animated fadeInUp" style={{ minHeight: "100vh", maxWidth: 700 }}>
