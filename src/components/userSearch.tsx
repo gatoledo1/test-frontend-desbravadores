@@ -28,6 +28,7 @@ function UserSearch({ onSearch }: UserSearchProps) {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               id="search"
+              autoComplete="false"
             />
             <span className="icon" onClick={() => {
               setOpen(true)
